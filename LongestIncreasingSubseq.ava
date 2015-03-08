@@ -1,0 +1,24 @@
+public class LongestIncreasingSubseq {
+
+    public static int LIS(int[] A) {
+	
+	int len = 0;
+	int [] table = new table[A.length];
+	Arrays.fill(table, 1);
+
+	List<Integer> result = new ArrayList<Integer>();
+	for (int i = 1; i < A.length; i++) {
+	    for (int j = 0; j < i ; j++) {
+		if (A[i] > A[j]) 
+		    table[i] = Math.max(table[j] + 1, table[i]);
+	    }
+	}
+
+	for (int i = 0; i < table.length; i++) {
+	    len = Math.max(len, table[i]);
+	}
+
+	return len;
+    }
+
+}
